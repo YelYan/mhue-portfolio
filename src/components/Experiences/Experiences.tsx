@@ -34,7 +34,7 @@ const Work = () => {
           <h3 className="text-lg font-medium">
             NELC SCHOOL (ASSISTANT TEACHER)
           </h3>
-          <ul className="list-disc list-inside space-y-2">
+          <ul className="list-disc list-inside space-y-2 font-light">
             <li>
               Provided care and attention to children, ensuring their safety and
               well being.
@@ -96,12 +96,12 @@ const Experiences = () => {
       <h1 className="text-center text-3xl mb-8 text-babe-blue">
         Education & <span className="text-babe-pink">Experiences</span>
       </h1>
-      <div className="h-full grid grid-cols-1 gap-6 mx-auto max-w-2xl">
-        <RevealTop>
+      <RevealTop>
+        <div className="h-full grid grid-cols-1 gap-8 mx-auto max-w-2xl">
           <Work />
           <Education />
-        </RevealTop>
-      </div>
+        </div>
+      </RevealTop>
     </section>
   );
 };

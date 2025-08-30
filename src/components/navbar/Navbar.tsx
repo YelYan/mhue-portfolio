@@ -3,7 +3,8 @@ import LOGO from "/assets/mhue-logo.svg";
 import useResponsive from "@/hooks/useResponsive";
 import { Menu, X, PawPrint, Cat } from "lucide-react";
 import { ParticlesBackground } from "../particles";
-
+import Birthday from "../birthday/Birthday";
+import { motion } from "framer-motion";
 const links = [
   { id: "hero", label: "Home" },
   { id: "about", label: "About" },
@@ -12,13 +13,39 @@ const links = [
 
 const MobileNav = ({ activeSection }: { activeSection: string }) => {
   const [navOpen, setNavOpen] = useState(false);
+
   return (
     <nav className="py-2 flex justify-between items-center">
       <a href="#hero" className="w-30 h-auto cursor-pointer">
         <img src={LOGO} width={150} height={150} alt="mhue's logo" />
       </a>
-
-      <div>
+      <div className="">
+        <Birthday>
+          <div className="">
+            <motion.p
+              className="text-sm md:text-md text-justify"
+              style={{
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+              }}
+              initial={{ width: 0 }}
+              animate={{ width: "100%" }}
+              transition={{
+                duration: 2,
+                ease: "easeInOut",
+              }}
+            >
+              Happy birthday to you!🎉 I hope everything you wish become in your
+              life. I know that it's been really hard for you to overcome this
+              difficult era. But I believe in you that you can do it. Just keep
+              pushing forward! and always remember that I will be here to
+              support you. And I promise I will come to you no matter where you
+              go. I will try my best to make you happy. My Babe boo❤️
+            </motion.p>
+          </div>
+        </Birthday>
+      </div>
+      <div className="flex items-center gap-2">
         <Menu
           width={30}
           height={30}

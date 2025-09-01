@@ -40,7 +40,13 @@ const MobileNav = ({ activeSection }: { activeSection: string }) => {
               difficult era. But I believe in you that you can do it. Just keep
               pushing forward! and always remember that I will be here to
               support you. And I promise I will come to you no matter where you
-              go. I will try my best to make you happy. My Babe boo❤️
+              go.I am really glad that I met you in my life I know that it was
+              short amount time that we became close and I am really hoping that
+              this will still go on even though it is hard. If you are willing
+              to have me around you I will stay beside you no matter what. The
+              only magic word you can say to me is just "stay" and I will
+              definitely listen to what you say. I will try my best to make you
+              happy. My Babe boo❤️
             </motion.p>
           </div>
         </Birthday>

@@ -20,7 +20,7 @@ const MobileNav = ({ activeSection }: { activeSection: string }) => {
         <img src={LOGO} width={150} height={150} alt="mhue's logo" />
       </a>
       <div className="">
-        <Birthday>
+        {/* <Birthday>
           <div className="">
             <motion.p
               className="text-sm md:text-md text-justify"
@@ -49,7 +49,7 @@ const MobileNav = ({ activeSection }: { activeSection: string }) => {
               happy. My Babe boo❤️
             </motion.p>
           </div>
-        </Birthday>
+        </Birthday> */}
       </div>
       <div className="flex items-center gap-2">
         <Menu

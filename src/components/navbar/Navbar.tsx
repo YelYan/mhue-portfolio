@@ -3,8 +3,8 @@ import LOGO from "/assets/mhue-logo.svg";
 import useResponsive from "@/hooks/useResponsive";
 import { Menu, X, PawPrint, Cat } from "lucide-react";
 import { ParticlesBackground } from "../particles";
-import Birthday from "../birthday/Birthday";
-import { motion } from "framer-motion";
+// import Birthday from "../birthday/Birthday";
+// import { motion } from "framer-motion";
 const links = [
   { id: "hero", label: "Home" },
   { id: "about", label: "About" },

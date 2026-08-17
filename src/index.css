@@ -26,6 +26,7 @@
   --font-display: "Poppins", ui-sans-serif, system-ui, sans-serif;
   --font-body: "Poppins", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "Roboto Mono", ui-monospace, monospace;
+  --font-literary: "Cormorant Garamond", "EB Garamond", "Times New Roman", serif;
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -136,12 +137,17 @@
     -moz-osx-font-smoothing: grayscale;
     letter-spacing: -0.005em;
   }
-  h1, h2, h3, .display {
+  h2, h3, .display {
     font-family: var(--font-display);
     font-weight: 600;
     letter-spacing: -0.03em;
   }
-  h1 { letter-spacing: -0.045em; font-weight: 700; }
+  h1, .font-literary {
+    font-family: var(--font-literary);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+  }
+  h1 { font-weight: 500; }
   em, i {
     font-style: normal;
     font-weight: 300;

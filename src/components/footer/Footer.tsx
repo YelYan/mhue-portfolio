@@ -113,7 +113,7 @@ const Footer = () => {
 
         <div className="mt-20 pt-8 border-t border-white/50 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <div className="flex items-center gap-4">
-            <span className="font-display text-2xl text-ink">Mhue</span>
+            <span className="font-literary text-3xl text-ink">Mhue</span>
             <span className="eyebrow">AI Fashion · Bangkok</span>
           </div>
           <p className="text-xs text-ink/50 font-mono uppercase tracking-widest">

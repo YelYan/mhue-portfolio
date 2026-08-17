@@ -148,7 +148,7 @@ const Hero = () => {
             Mhue Hayman &nbsp;/&nbsp; AI Fashion Designer
           </motion.p>
 
-          <h1 className="font-display text-[15vw] md:text-[9.2vw] leading-[0.9] tracking-tight text-ink">
+          <h1 className="font-literary text-[15vw] md:text-[9.2vw] leading-[0.95] tracking-tight text-ink">
             <AnimatedWord className="text-babe-blue-deep" delay={0.15}>
               Designing
             </AnimatedWord>

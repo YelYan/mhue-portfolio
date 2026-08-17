@@ -18,7 +18,7 @@ const Wordmark = () => (
     className="flex items-baseline gap-2 cursor-pointer group"
     aria-label="Mhue — home"
   >
-    <span className="font-display text-2xl md:text-3xl text-ink leading-none">
+    <span className="font-literary text-3xl md:text-4xl text-ink leading-none">
       Mhue
     </span>
     <span className="eyebrow hidden md:inline text-ash group-hover:text-ink transition-colors">

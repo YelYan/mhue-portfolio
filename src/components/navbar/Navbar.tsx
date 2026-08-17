@@ -48,7 +48,7 @@ const DesktopNav = ({ activeSection }: { activeSection: string }) => {
       </ul>
       <a
         href="#contact"
-        className="group inline-flex items-center gap-2 bg-ink text-bone text-sm px-4 py-2 rounded-full hover:bg-graphite transition-colors"
+        className="group inline-flex items-center gap-2 bg-babe-pink text-ink text-sm px-4 py-2 rounded-full hover:bg-babe-blue transition-colors shadow-sm"
       >
         Get in touch
         <ArrowUpRight
@@ -118,7 +118,7 @@ const MobileNav = ({ activeSection }: { activeSection: string }) => {
         <div className="px-4 mt-10">
           <a
             href="mailto:mhuehayman.niko@gmail.com"
-            className="inline-flex items-center gap-2 bg-ink text-bone text-sm px-5 py-3 rounded-full"
+            className="inline-flex items-center gap-2 bg-babe-pink text-ink text-sm px-5 py-3 rounded-full"
           >
             mhuehayman.niko@gmail.com
             <ArrowUpRight size={14} />

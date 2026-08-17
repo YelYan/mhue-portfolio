@@ -58,9 +58,9 @@ const Experiences = () => {
         <div className="md:col-span-5">
           <p className="eyebrow mb-4">Track Record / N° 005</p>
           <h2 className="font-display text-5xl md:text-6xl leading-[0.95] text-ink">
-            Experience,
+            <span className="text-babe-blue-deep">Experience</span>,
             <br />
-            translated for <em className="font-light">fashion</em>.
+            translated for <em className="font-light text-babe-pink-deep">fashion</em>.
           </h2>
         </div>
         <div className="md:col-span-6 md:col-start-7 flex items-end">
@@ -84,7 +84,11 @@ const Experiences = () => {
               delay: i * 0.12,
               ease: [0.22, 1, 0.36, 1],
             }}
-            className="group grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-10 py-10 border-t border-line hover:bg-cream/50 transition-colors"
+            className={`group grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-10 py-10 border-t border-line transition-colors ${
+              i % 2 === 0
+                ? "hover:bg-babe-blue-soft/30"
+                : "hover:bg-babe-pink-soft/30"
+            }`}
           >
             <div className="md:col-span-2 eyebrow">{r.years}</div>
             <div className="md:col-span-4">
@@ -98,7 +102,7 @@ const Experiences = () => {
             <ul className="md:col-span-6 space-y-2 text-graphite text-[15px] leading-relaxed">
               {r.bullets.map((b) => (
                 <li key={b} className="flex gap-3">
-                  <span className="mt-2 h-1 w-1 rounded-full bg-babe-accent shrink-0" />
+                  <span className="mt-2 h-1 w-1 rounded-full duotone shrink-0" />
                   {b}
                 </li>
               ))}

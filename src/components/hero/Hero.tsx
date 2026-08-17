@@ -23,14 +23,14 @@ const Hero = () => {
         >
           <p className="eyebrow mb-6">Mhue Hayman &nbsp;/&nbsp; AI Fashion Designer</p>
           <h1 className="font-display text-[15vw] md:text-[9.2vw] leading-[0.9] tracking-tight text-ink">
-            Designing
+            <span className="text-babe-blue-deep">Designing</span>
             <br />
             <span className="italic font-light">the next</span>{" "}
-            <span className="relative inline-block">
+            <span className="relative inline-block duotone-text">
               wardrobe
-              <span className="absolute left-0 right-0 -bottom-1 md:-bottom-2 h-[2px] bg-babe-pink" />
+              <span className="absolute left-0 right-0 -bottom-1 md:-bottom-2 h-[3px] duotone rounded-full" />
             </span>
-            .
+            <span className="text-babe-pink-deep">.</span>
           </h1>
           <p className="mt-8 max-w-xl text-graphite text-lg leading-relaxed font-light">
             A Bangkok-based creative pairing an editorial eye with AI-native tools —
@@ -39,10 +39,14 @@ const Hero = () => {
           </p>
 
           <div className="mt-8 flex flex-wrap gap-2">
-            {chips.map((c) => (
+            {chips.map((c, i) => (
               <span
                 key={c}
-                className="text-xs font-mono tracking-wider uppercase px-3 py-1.5 rounded-full border border-ink/15 text-ink/80 bg-bone"
+                className={`text-xs font-mono tracking-wider uppercase px-3 py-1.5 rounded-full border ${
+                  i % 2 === 0
+                    ? "border-babe-blue-deep/40 bg-babe-blue-soft/60 text-babe-blue-deep"
+                    : "border-babe-pink-deep/40 bg-babe-pink-soft/60 text-babe-pink-deep"
+                }`}
               >
                 {c}
               </span>
@@ -52,7 +56,7 @@ const Hero = () => {
           <div className="mt-10 flex flex-wrap items-center gap-3">
             <a
               href="#lookbook"
-              className="group inline-flex items-center gap-3 bg-ink text-bone px-6 py-3.5 rounded-full text-sm font-medium hover:bg-graphite transition-colors"
+              className="group inline-flex items-center gap-3 bg-babe-pink text-ink px-6 py-3.5 rounded-full text-sm font-medium hover:bg-babe-pink-deep hover:text-white transition-colors shadow-sm"
             >
               View the Lookbook
               <ArrowUpRight
@@ -63,7 +67,7 @@ const Hero = () => {
             <a
               href="/assets/mhue-cv.pdf"
               download
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full text-sm font-medium border border-ink/20 text-ink hover:bg-ink hover:text-bone transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full text-sm font-medium border-2 border-babe-blue-deep text-babe-blue-deep hover:bg-babe-blue hover:text-ink transition-colors"
             >
               Download CV
             </a>
@@ -118,15 +122,16 @@ const Hero = () => {
       </div>
 
       {/* stat rail */}
-      <div className="mt-16 md:mt-24 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 border-t border-line pt-8">
+      <div className="mt-16 md:mt-24 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 pt-8 relative">
+        <span className="absolute top-0 left-0 right-0 h-[2px] duotone rounded-full" />
         {[
-          { k: "06", v: "AI-generated looks" },
-          { k: "02", v: "Target markets — EU · US" },
-          { k: "AI", v: "Design & imagery workflow" },
-          { k: "24h", v: "Concept to campaign" },
+          { k: "06", v: "AI-generated looks", c: "text-babe-blue-deep" },
+          { k: "02", v: "Target markets — EU · US", c: "text-babe-pink-deep" },
+          { k: "AI", v: "Design & imagery workflow", c: "text-babe-blue-deep" },
+          { k: "24h", v: "Concept to campaign", c: "text-babe-pink-deep" },
         ].map((s) => (
           <div key={s.v} className="flex flex-col">
-            <span className="font-display text-4xl md:text-5xl text-ink">{s.k}</span>
+            <span className={`font-display text-4xl md:text-5xl ${s.c}`}>{s.k}</span>
             <span className="mt-2 eyebrow">{s.v}</span>
           </div>
         ))}

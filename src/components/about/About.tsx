@@ -30,8 +30,8 @@ const About = () => {
         <div className="md:col-span-4">
           <p className="eyebrow mb-4">About / N° 002</p>
           <h2 className="font-display text-5xl md:text-6xl leading-[0.95] text-ink">
-            An <em className="font-light">adaptable</em> creative,
-            wired for <span className="text-babe-accent">new tools</span>.
+            An <em className="font-light text-babe-blue-deep">adaptable</em> creative,
+            wired for <span className="text-babe-pink-deep">new tools</span>.
           </h2>
         </div>
 
@@ -57,21 +57,26 @@ const About = () => {
           </p>
 
           <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-6">
-            {philosophy.map((p) => (
-              <div key={p.n} className="border-t border-line pt-4">
-                <div className="flex items-baseline justify-between mb-2">
-                  <span className="font-mono text-xs text-ash">— {p.n}</span>
+            {philosophy.map((p, i) => {
+              const tint = ["bg-babe-blue-soft/40", "bg-babe-pink-soft/40", "bg-babe-blue-soft/40"][i];
+              const dot = ["bg-babe-blue-deep", "bg-babe-pink-deep", "bg-babe-blue-deep"][i];
+              return (
+                <div key={p.n} className={`rounded-lg p-5 ${tint} border border-white/60`}>
+                  <div className="flex items-baseline justify-between mb-3">
+                    <span className={`h-2 w-2 rounded-full ${dot}`} />
+                    <span className="font-mono text-xs text-ash">— {p.n}</span>
+                  </div>
+                  <h3 className="font-display text-xl text-ink mb-1.5">{p.k}</h3>
+                  <p className="text-sm text-graphite leading-relaxed">{p.v}</p>
                 </div>
-                <h3 className="font-display text-xl text-ink mb-1.5">{p.k}</h3>
-                <p className="text-sm text-graphite leading-relaxed">{p.v}</p>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           <a
             href={CvLetter}
             download
-            className="mt-10 group inline-flex items-center gap-2 text-ink hover:text-babe-accent transition-colors font-medium"
+            className="mt-10 group inline-flex items-center gap-2 text-babe-blue-deep hover:text-babe-pink-deep transition-colors font-medium"
           >
             Download cover letter
             <ArrowUpRight

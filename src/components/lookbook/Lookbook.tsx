@@ -79,9 +79,10 @@ const Lookbook = () => {
         <div>
           <p className="eyebrow mb-4">Lookbook / N° 004</p>
           <h2 className="font-display text-5xl md:text-7xl leading-[0.92] text-ink">
-            AI-generated
+            <span className="text-babe-blue-deep">AI-generated</span>
             <br />
-            <em className="font-light">collection</em> — SS26.
+            <em className="font-light">collection</em>{" "}
+            <span className="duotone-text">— SS26</span>.
           </h2>
         </div>
         <p className="max-w-md text-graphite text-lg font-light leading-relaxed">
@@ -92,14 +93,14 @@ const Lookbook = () => {
       </div>
 
       {/* Running marquee strip */}
-      <div className="relative overflow-hidden border-y border-line py-4 mb-12 md:mb-16 bg-cream">
+      <div className="relative overflow-hidden py-4 mb-12 md:mb-16 duotone">
         <div className="flex whitespace-nowrap marquee-track">
           {Array.from({ length: 2 }).map((_, k) => (
             <div key={k} className="flex items-center shrink-0">
               {[
                 "SS · 26",
                 "AI Fashion",
-                "Bone & Champagne",
+                "Baby Blue & Baby Pink",
                 "Editorial",
                 "EU / US Storefront",
                 "Prompt · Style · Ship",
@@ -107,9 +108,9 @@ const Lookbook = () => {
               ].map((w) => (
                 <span
                   key={w + k}
-                  className="mx-6 font-display italic text-3xl md:text-4xl text-ink/80"
+                  className="mx-6 font-display italic text-3xl md:text-4xl text-ink"
                 >
-                  {w} <span className="text-babe-accent mx-3">✦</span>
+                  {w} <span className="text-white mx-3">✦</span>
                 </span>
               ))}
             </div>
@@ -177,7 +178,7 @@ const Lookbook = () => {
         <div className="md:text-right">
           <a
             href="mailto:mhuehayman.niko@gmail.com"
-            className="inline-flex items-center gap-2 text-ink font-medium hover:text-babe-accent transition-colors"
+            className="inline-flex items-center gap-2 text-babe-pink-deep font-medium hover:text-babe-blue-deep transition-colors"
           >
             Commission a bespoke lookbook
             <ArrowUpRight size={18} />

@@ -90,13 +90,7 @@ const MobileNav = ({ activeSection }: { activeSection: string }) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-50"
-            style={{
-              backdropFilter: "blur(22px) saturate(140%)",
-              WebkitBackdropFilter: "blur(22px) saturate(140%)",
-              background:
-                "linear-gradient(135deg, rgba(207,228,253,0.72) 0%, rgba(251,234,234,0.72) 60%, rgba(250,222,222,0.75) 100%)",
-            }}
+            className="fixed inset-0 z-50 bg-white"
           >
             {/* soft duotone orbs behind content */}
             <div
@@ -146,7 +140,7 @@ const MobileNav = ({ activeSection }: { activeSection: string }) => {
                     },
                     closed: { opacity: 0, y: 12 },
                   }}
-                  className="border-b border-white/50 pb-3"
+                  className="border-b border-line pb-3"
                 >
                   <a
                     href={`#${link.id}`}
@@ -220,8 +214,8 @@ const Navbar = () => {
 
   return (
     <header
-      className={`px-4 md:px-20 sticky top-0 w-full z-40 backdrop-blur-md bg-bone/80 transition-shadow ${
-        scroll ? "shadow-[0_1px_0_0_var(--color-line)]" : ""
+      className={`px-4 md:px-20 sticky top-0 w-full z-40 bg-white transition-shadow ${
+        scroll ? "shadow-[0_1px_0_0_var(--color-line)]" : "border-b border-transparent"
       }`}
     >
       {(desktopResponsive || tabletResponsive) && (

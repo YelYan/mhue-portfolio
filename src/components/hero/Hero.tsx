@@ -2,6 +2,7 @@ import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { ArrowUpRight, Mail, MapPin } from "lucide-react";
 import { useRef } from "react";
 import { useCountUp } from "@/hooks/useCountUp";
+import LookDeck from "./LookDeck";
 
 const BASE = import.meta.env.BASE_URL;
 const asset = (p: string) => `${BASE}${p.replace(/^\/+/, "")}`;
@@ -71,17 +72,13 @@ const Hero = () => {
        radial-gradient(500px circle at ${100 - x}% ${100 - y}%, rgba(244,194,194,0.35), transparent 55%)`
   );
 
-  // Parallax offsets for mosaic images
+  // Parallax offsets for the 3D deck wrapper
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
   const mxs = useSpring(mx, { stiffness: 80, damping: 20 });
   const mys = useSpring(my, { stiffness: 80, damping: 20 });
-  const t1x = useTransform(mxs, (v) => v * -14);
-  const t1y = useTransform(mys, (v) => v * -14);
-  const t2x = useTransform(mxs, (v) => v * 10);
-  const t2y = useTransform(mys, (v) => v * 10);
-  const t3x = useTransform(mxs, (v) => v * -6);
-  const t3y = useTransform(mys, (v) => v * 6);
+  const t1x = useTransform(mxs, (v) => v * -10);
+  const t1y = useTransform(mys, (v) => v * -10);
 
   const onMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const el = heroRef.current;
@@ -255,53 +252,16 @@ const Hero = () => {
           </motion.div>
         </div>
 
-        {/* Editorial mosaic with parallax */}
+        {/* 3D signature look deck */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.1, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="md:col-span-4 relative"
         >
-          <motion.div
-            style={{ x: t1x, y: t1y }}
-            className="relative aspect-[3/4] overflow-hidden rounded-sm bg-cream ring-1 ring-white/60 shadow-[0_20px_40px_-20px_rgba(28,26,43,0.25)]"
-          >
-            <img
-              src={asset("assets/lookbook/01-minimal-cream.jpg")}
-              alt="Editorial fashion — cream tailoring"
-              className="w-full h-full object-cover"
-              loading="eager"
-            />
-            <div className="absolute bottom-3 left-3 right-3 flex justify-between items-end eyebrow text-white/90 mix-blend-difference">
-              <span>Look 01 · Cream</span>
-              <span>SS · 26</span>
-            </div>
+          <motion.div style={{ x: t1x, y: t1y }}>
+            <LookDeck />
           </motion.div>
-
-          <div className="mt-3 grid grid-cols-2 gap-3">
-            <motion.div
-              style={{ x: t2x, y: t2y }}
-              className="relative aspect-[3/4] overflow-hidden rounded-sm bg-cream ring-1 ring-white/60"
-            >
-              <img
-                src={asset("assets/lookbook/03-evening-silk.jpg")}
-                alt="Editorial fashion — silk evening"
-                className="w-full h-full object-cover"
-                loading="lazy"
-              />
-            </motion.div>
-            <motion.div
-              style={{ x: t3x, y: t3y }}
-              className="relative aspect-[3/4] overflow-hidden rounded-sm bg-cream ring-1 ring-white/60"
-            >
-              <img
-                src={asset("assets/lookbook/06-tailoring-charcoal.jpg")}
-                alt="Editorial fashion — charcoal tailoring"
-                className="w-full h-full object-cover"
-                loading="lazy"
-              />
-            </motion.div>
-          </div>
         </motion.div>
       </div>
 

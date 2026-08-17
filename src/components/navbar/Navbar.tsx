@@ -1,88 +1,44 @@
 import { useState, useEffect } from "react";
-import LOGO from "/assets/mhue-logo.svg";
 import useResponsive from "@/hooks/useResponsive";
-import { Menu, X, PawPrint, Cat } from "lucide-react";
-import { ParticlesBackground } from "../particles";
-// import Birthday from "../birthday/Birthday";
-// import { motion } from "framer-motion";
+import { Menu, X, ArrowUpRight } from "lucide-react";
+
 const links = [
-  { id: "hero", label: "Home" },
-  { id: "about", label: "About" },
-  { id: "skills", label: "Skills" },
+  { id: "hero", label: "Index", n: "01" },
+  { id: "about", label: "About", n: "02" },
+  { id: "skills", label: "Capabilities", n: "03" },
+  { id: "lookbook", label: "Lookbook", n: "04" },
+  { id: "experience", label: "Experience", n: "05" },
+  { id: "contact", label: "Contact", n: "06" },
 ];
 
-const MobileNav = ({ activeSection }: { activeSection: string }) => {
-  const [navOpen, setNavOpen] = useState(false);
+const Wordmark = () => (
+  <a
+    href="#hero"
+    className="flex items-baseline gap-2 cursor-pointer group"
+    aria-label="Mhue — home"
+  >
+    <span className="font-display text-2xl md:text-3xl italic text-ink leading-none">
+      Mhue
+    </span>
+    <span className="eyebrow hidden md:inline text-ash group-hover:text-ink transition-colors">
+      / AI Fashion
+    </span>
+  </a>
+);
 
+const DesktopNav = ({ activeSection }: { activeSection: string }) => {
   return (
-    <nav className="py-2 flex justify-between items-center">
-      <a href="#hero" className="w-30 h-auto cursor-pointer">
-        <img src={LOGO} width={150} height={150} alt="mhue's logo" />
-      </a>
-      <div className="">
-        {/* <Birthday>
-          <div className="">
-            <motion.p
-              className="text-sm md:text-md text-justify"
-              style={{
-                overflow: "hidden",
-                textOverflow: "ellipsis",
-              }}
-              initial={{ width: 0 }}
-              animate={{ width: "100%" }}
-              transition={{
-                duration: 2,
-                ease: "easeInOut",
-              }}
-            >
-              Happy birthday to you!🎉 I hope everything you wish become in your
-              life. I know that it's been really hard for you to overcome this
-              difficult era. But I believe in you that you can do it. Just keep
-              pushing forward! and always remember that I will be here to
-              support you. And I promise I will come to you no matter where you
-              go.I am really glad that I met you in my life I know that it was
-              short amount time that we became close and I am really hoping that
-              this will still go on even though it is hard. If you are willing
-              to have me around you I will stay beside you no matter what. The
-              only magic word you can say to me is just "stay" and I will
-              definitely listen to what you say. I will try my best to make you
-              happy. My Babe boo❤️
-            </motion.p>
-          </div>
-        </Birthday> */}
-      </div>
-      <div className="flex items-center gap-2">
-        <Menu
-          width={30}
-          height={30}
-          className="cursor-pointer"
-          onClick={() => setNavOpen(true)}
-        />
-      </div>
-
-      <ul
-        className={`flex flex-col justify-center items-center space-y-4 inset-shadow-2xs fixed inset-0 z-99 bg-white transition delay-150 duration-300 ease-in-out transform ${
-          navOpen ? "translate-x-0" : "translate-x-full"
-        }`}
-      >
-        <ParticlesBackground />
-        <PawPrint className="absolute top-10 left-10 text-babe-pink" />
-        <Cat className="absolute bottom-10 right-10 text-babe-blue" />
-        <X
-          width={30}
-          height={30}
-          className="cursor-pointer absolute top-5 right-5"
-          onClick={() => setNavOpen(false)}
-        />
-        {links.map((link) => (
+    <nav className="flex items-center justify-between h-16">
+      <Wordmark />
+      <ul className="flex items-center gap-8">
+        {links.slice(1, 5).map((link) => (
           <li key={link.id}>
             <a
               href={`#${link.id}`}
-              onClick={() => setNavOpen(false)}
-              className={`text-xl ${
+              className={`text-sm transition-colors ${
                 activeSection === link.id
-                  ? "text-babe-blue font-bold"
-                  : "text-babe-pink"
+                  ? "text-ink font-medium"
+                  : "text-graphite hover:text-ink"
               }`}
             >
               {link.label}
@@ -90,33 +46,85 @@ const MobileNav = ({ activeSection }: { activeSection: string }) => {
           </li>
         ))}
       </ul>
+      <a
+        href="#contact"
+        className="group inline-flex items-center gap-2 bg-ink text-bone text-sm px-4 py-2 rounded-full hover:bg-graphite transition-colors"
+      >
+        Get in touch
+        <ArrowUpRight
+          size={14}
+          className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+        />
+      </a>
     </nav>
   );
 };
 
-const DesktopNav = ({ activeSection }: { activeSection: string }) => {
-  return (
-    <nav className="flex items-center justify-between">
-      <a href="#hero" className="w-40 h-auto cursor-pointer">
-        <img src={LOGO} alt="mhue's logo" />
-      </a>
+const MobileNav = ({ activeSection }: { activeSection: string }) => {
+  const [navOpen, setNavOpen] = useState(false);
 
-      <ul className="flex space-x-4">
-        {links.map((link) => (
-          <li key={link.id}>
-            <a
-              href={`#${link.id}`}
-              className={`${
-                activeSection === link.id
-                  ? "text-babe-blue font-bold"
-                  : "text-babe-pink"
-              }`}
-            >
-              {link.label}
-            </a>
-          </li>
-        ))}
-      </ul>
+  useEffect(() => {
+    if (navOpen) document.body.style.overflow = "hidden";
+    else document.body.style.overflow = "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [navOpen]);
+
+  return (
+    <nav className="flex justify-between items-center h-14">
+      <Wordmark />
+      <button
+        aria-label="Open menu"
+        onClick={() => setNavOpen(true)}
+        className="p-2 -mr-2 text-ink"
+      >
+        <Menu size={22} />
+      </button>
+
+      <div
+        className={`fixed inset-0 z-50 bg-bone transition-opacity duration-300 ${
+          navOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        }`}
+      >
+        <div className="flex items-center justify-between px-4 h-14">
+          <Wordmark />
+          <button
+            aria-label="Close menu"
+            onClick={() => setNavOpen(false)}
+            className="p-2 -mr-2 text-ink"
+          >
+            <X size={22} />
+          </button>
+        </div>
+
+        <ul className="px-4 mt-8 space-y-4">
+          {links.map((link) => (
+            <li key={link.id} className="border-b border-line pb-4">
+              <a
+                href={`#${link.id}`}
+                onClick={() => setNavOpen(false)}
+                className={`flex items-baseline justify-between font-display text-3xl leading-none ${
+                  activeSection === link.id ? "text-ink" : "text-graphite"
+                }`}
+              >
+                <span>{link.label}</span>
+                <span className="font-mono text-xs text-ash">{link.n}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <div className="px-4 mt-10">
+          <a
+            href="mailto:mhuehayman.niko@gmail.com"
+            className="inline-flex items-center gap-2 bg-ink text-bone text-sm px-5 py-3 rounded-full"
+          >
+            mhuehayman.niko@gmail.com
+            <ArrowUpRight size={14} />
+          </a>
+        </div>
+      </div>
     </nav>
   );
 };
@@ -129,16 +137,8 @@ const Navbar = () => {
   const [scroll, setScroll] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 30) {
-        setScroll(true);
-      } else {
-        setScroll(false);
-      }
-    };
-
+    const handleScroll = () => setScroll(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -148,31 +148,20 @@ const Navbar = () => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
+          if (entry.isIntersecting) setActiveSection(entry.target.id);
         });
       },
-      { threshold: 0.6 } // 60% of section visible
+      { threshold: 0.4 }
     );
 
     sections.forEach((section) => observer.observe(section));
-
-    // ✅ Check which section is initially visible
-    sections.forEach((section) => {
-      const rect = section.getBoundingClientRect();
-      if (rect.top >= 0 && rect.top < window.innerHeight / 2) {
-        setActiveSection(section.id);
-      }
-    });
-
     return () => sections.forEach((section) => observer.unobserve(section));
   }, []);
 
   return (
     <header
-      className={`px-4 md:px-18 sticky top-0 w-full z-10 bg-white ${
-        scroll ? "shadow-sm" : ""
+      className={`px-4 md:px-20 sticky top-0 w-full z-40 backdrop-blur-md bg-bone/80 transition-shadow ${
+        scroll ? "shadow-[0_1px_0_0_var(--color-line)]" : ""
       }`}
     >
       {(desktopResponsive || tabletResponsive) && (

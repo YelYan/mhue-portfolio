@@ -23,9 +23,9 @@
   --color-babe-pink-deep: #e59292;
   --color-babe-accent: #e59292;
 
-  --font-display: "Fraunces", "Times New Roman", serif;
-  --font-body: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-display: "Instrument Serif", "Times New Roman", serif;
+  --font-body: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "DM Mono", ui-monospace, monospace;
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -131,14 +131,19 @@
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-body);
-    font-feature-settings: "ss01", "cv11";
+    font-feature-settings: "ss01", "ss02";
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    letter-spacing: -0.005em;
   }
   h1, h2, h3, .display {
     font-family: var(--font-display);
-    font-optical-sizing: auto;
-    letter-spacing: -0.015em;
+    font-weight: 400;
+    letter-spacing: -0.025em;
+  }
+  h1 { letter-spacing: -0.035em; }
+  em, i, .italic {
+    font-style: italic;
   }
   ::selection {
     background: var(--color-ink);

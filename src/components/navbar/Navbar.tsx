@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import useResponsive from "@/hooks/useResponsive";
 import { Menu, X, ArrowUpRight } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
 
 const links = [
   { id: "hero", label: "Index", n: "01" },
@@ -82,49 +83,108 @@ const MobileNav = ({ activeSection }: { activeSection: string }) => {
         <Menu size={22} />
       </button>
 
-      <div
-        className={`fixed inset-0 z-50 bg-bone transition-opacity duration-300 ${
-          navOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-        }`}
-      >
-        <div className="flex items-center justify-between px-4 h-14">
-          <Wordmark />
-          <button
-            aria-label="Close menu"
-            onClick={() => setNavOpen(false)}
-            className="p-2 -mr-2 text-ink"
+      <AnimatePresence>
+        {navOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-50"
+            style={{
+              backdropFilter: "blur(22px) saturate(140%)",
+              WebkitBackdropFilter: "blur(22px) saturate(140%)",
+              background:
+                "linear-gradient(135deg, rgba(207,228,253,0.72) 0%, rgba(251,234,234,0.72) 60%, rgba(250,222,222,0.75) 100%)",
+            }}
           >
-            <X size={22} />
-          </button>
-        </div>
+            {/* soft duotone orbs behind content */}
+            <div
+              aria-hidden
+              className="absolute -top-24 -left-16 w-72 h-72 rounded-full opacity-70 blur-3xl"
+              style={{ background: "var(--color-babe-blue-soft)" }}
+            />
+            <div
+              aria-hidden
+              className="absolute -bottom-24 -right-16 w-80 h-80 rounded-full opacity-70 blur-3xl"
+              style={{ background: "var(--color-babe-pink-soft)" }}
+            />
 
-        <ul className="px-4 mt-8 space-y-4">
-          {links.map((link) => (
-            <li key={link.id} className="border-b border-line pb-4">
-              <a
-                href={`#${link.id}`}
+            <div className="relative flex items-center justify-between px-4 h-14">
+              <Wordmark />
+              <button
+                aria-label="Close menu"
                 onClick={() => setNavOpen(false)}
-                className={`flex items-baseline justify-between font-display text-3xl leading-none ${
-                  activeSection === link.id ? "text-ink" : "text-graphite"
-                }`}
+                className="p-2 -mr-2 text-ink"
               >
-                <span>{link.label}</span>
-                <span className="font-mono text-xs text-ash">{link.n}</span>
-              </a>
-            </li>
-          ))}
-        </ul>
+                <X size={22} />
+              </button>
+            </div>
 
-        <div className="px-4 mt-10">
-          <a
-            href="mailto:mhuehayman.niko@gmail.com"
-            className="inline-flex items-center gap-2 bg-babe-pink text-ink text-sm px-5 py-3 rounded-full"
-          >
-            mhuehayman.niko@gmail.com
-            <ArrowUpRight size={14} />
-          </a>
-        </div>
-      </div>
+            <motion.ul
+              initial="closed"
+              animate="open"
+              exit="closed"
+              variants={{
+                open: {
+                  transition: { staggerChildren: 0.055, delayChildren: 0.08 },
+                },
+                closed: {
+                  transition: { staggerChildren: 0.03, staggerDirection: -1 },
+                },
+              }}
+              className="relative px-4 mt-6 space-y-3"
+            >
+              {links.map((link) => (
+                <motion.li
+                  key={link.id}
+                  variants={{
+                    open: {
+                      opacity: 1,
+                      y: 0,
+                      transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+                    },
+                    closed: { opacity: 0, y: 12 },
+                  }}
+                  className="border-b border-white/50 pb-3"
+                >
+                  <a
+                    href={`#${link.id}`}
+                    onClick={() => setNavOpen(false)}
+                    className={`group flex items-baseline justify-between font-display text-4xl leading-none transition-colors ${
+                      activeSection === link.id
+                        ? "text-babe-pink-deep"
+                        : "text-ink hover:text-babe-blue-deep"
+                    }`}
+                  >
+                    <span>{link.label}</span>
+                    <span className="font-mono text-xs text-ash group-hover:text-babe-pink-deep transition-colors">
+                      {link.n}
+                    </span>
+                  </a>
+                </motion.li>
+              ))}
+            </motion.ul>
+
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              transition={{ delay: 0.45, duration: 0.5 }}
+              className="relative px-4 mt-10 flex flex-col gap-3"
+            >
+              <a
+                href="mailto:mhuehayman.niko@gmail.com"
+                className="inline-flex items-center justify-between gap-2 bg-ink text-bone text-sm px-5 py-3 rounded-full shadow-sm"
+              >
+                mhuehayman.niko@gmail.com
+                <ArrowUpRight size={14} />
+              </a>
+              <p className="eyebrow px-1">Bangkok · Available for hire</p>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };

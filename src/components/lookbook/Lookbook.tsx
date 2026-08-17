@@ -1,6 +1,10 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { ArrowUpRight } from "lucide-react";
+import TiltCard from "@/components/ui/TiltCard";
+
+const BASE = import.meta.env.BASE_URL;
+const asset = (p: string) => `${BASE}${p.replace(/^\/+/, "")}`;
 
 type Look = {
   n: string;
@@ -19,7 +23,7 @@ const looks: Look[] = [
     concept: "Oversized wool jacket, wide trouser, quiet luxury.",
     palette: "Cream · Bone · Pearl",
     category: "Ready-to-Wear",
-    img: "/assets/lookbook/01-minimal-cream.jpg",
+    img: asset("assets/lookbook/01-minimal-cream.jpg"),
     span: "tall",
   },
   {
@@ -28,7 +32,7 @@ const looks: Look[] = [
     concept: "Graphic knit and cargo — streetwear with an editorial spine.",
     palette: "Ash · Slate · Bone",
     category: "Streetwear",
-    img: "/assets/lookbook/02-streetwear-tokyo.jpg",
+    img: asset("assets/lookbook/02-streetwear-tokyo.jpg"),
     span: "short",
   },
   {
@@ -37,7 +41,7 @@ const looks: Look[] = [
     concept: "Bias silk slip, cowl neckline, warm golden light.",
     palette: "Champagne · Amber",
     category: "Evening",
-    img: "/assets/lookbook/03-evening-silk.jpg",
+    img: asset("assets/lookbook/03-evening-silk.jpg"),
     span: "tall",
   },
   {
@@ -46,7 +50,7 @@ const looks: Look[] = [
     concept: "Architectural draping, one exaggerated sleeve, museum air.",
     palette: "Ivory · Sand",
     category: "Avant-Garde",
-    img: "/assets/lookbook/04-avantgarde-ivory.jpg",
+    img: asset("assets/lookbook/04-avantgarde-ivory.jpg"),
     span: "short",
   },
   {
@@ -55,7 +59,7 @@ const looks: Look[] = [
     concept: "Pearl-buttoned blush blouse, pleated ivory, sunlit linen.",
     palette: "Blush · Pearl",
     category: "Romantic",
-    img: "/assets/lookbook/05-romantic-blush.jpg",
+    img: asset("assets/lookbook/05-romantic-blush.jpg"),
     span: "short",
   },
   {
@@ -64,7 +68,7 @@ const looks: Look[] = [
     concept: "Double-breasted charcoal wool, sharp trouser, parquet floor.",
     palette: "Charcoal · Ink",
     category: "Tailoring",
-    img: "/assets/lookbook/06-tailoring-charcoal.jpg",
+    img: asset("assets/lookbook/06-tailoring-charcoal.jpg"),
     span: "tall",
   },
 ];
@@ -137,26 +141,41 @@ const Lookbook = () => {
               i % 3 === 1 ? "lg:mt-16" : ""
             }`}
           >
-            <div className="relative overflow-hidden bg-cream rounded-sm mb-4 aspect-[3/4]">
-              <img
-                src={l.img}
-                alt={`Look ${l.n} — ${l.title}`}
-                className="look-img w-full h-full object-cover"
-                loading="lazy"
-              />
-              <div className="absolute top-3 left-3 right-3 flex justify-between eyebrow text-white/95 mix-blend-difference">
-                <span>Look {l.n}</span>
-                <span>{l.category}</span>
+            <TiltCard
+              max={7}
+              cursorLabel="View · SS26"
+              className="mb-4"
+            >
+              <div className="relative overflow-hidden bg-cream rounded-sm aspect-[3/4] ring-1 ring-white/60 shadow-[0_18px_45px_-25px_rgba(28,26,43,0.35)]">
+                <img
+                  src={l.img}
+                  alt={`Look ${l.n} — ${l.title}`}
+                  className="look-img w-full h-full object-cover"
+                  loading="lazy"
+                />
+                {/* Corner tint that pulses on hover */}
+                <span
+                  aria-hidden
+                  className={`pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${
+                    i % 2 === 0
+                      ? "bg-gradient-to-tr from-babe-blue/25 via-transparent to-transparent"
+                      : "bg-gradient-to-tr from-babe-pink/25 via-transparent to-transparent"
+                  }`}
+                />
+                <div className="absolute top-3 left-3 right-3 flex justify-between eyebrow text-white/95 mix-blend-difference">
+                  <span>Look {l.n}</span>
+                  <span>{l.category}</span>
+                </div>
               </div>
-            </div>
+            </TiltCard>
 
             <div className="flex items-baseline justify-between">
-              <h3 className="font-display text-2xl md:text-[28px] leading-tight text-ink">
+              <h3 className="font-display text-2xl md:text-[28px] leading-tight text-ink transition-colors duration-300 group-hover:text-babe-pink-deep">
                 {l.title}
               </h3>
               <ArrowUpRight
                 size={20}
-                className="text-ash transition-all duration-300 group-hover:text-ink group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                className="text-ash transition-all duration-300 group-hover:text-babe-blue-deep group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
               />
             </div>
             <p className="mt-2 text-graphite text-[15px] leading-relaxed">

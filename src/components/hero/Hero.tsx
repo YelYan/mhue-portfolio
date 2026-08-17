@@ -153,7 +153,7 @@ const Hero = () => {
               Designing
             </AnimatedWord>
             <br />
-            <AnimatedWord className="italic font-light" delay={0.55}>
+            <AnimatedWord className="font-light" delay={0.55}>
               the next
             </AnimatedWord>{" "}
             <span className="relative inline-block">

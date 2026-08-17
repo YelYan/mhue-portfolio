@@ -23,7 +23,7 @@
   --color-babe-pink-deep: #e59292;
   --color-babe-accent: #e59292;
 
-  --font-display: "Instrument Serif", "Times New Roman", serif;
+  --font-display: "Playfair Display", "Times New Roman", serif;
   --font-body: "Manrope", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "DM Mono", ui-monospace, monospace;
 
@@ -138,12 +138,13 @@
   }
   h1, h2, h3, .display {
     font-family: var(--font-display);
-    font-weight: 400;
-    letter-spacing: -0.025em;
+    font-weight: 500;
+    letter-spacing: -0.02em;
   }
-  h1 { letter-spacing: -0.035em; }
-  em, i, .italic {
-    font-style: italic;
+  h1 { letter-spacing: -0.03em; font-weight: 600; }
+  em, i {
+    font-style: normal;
+    font-weight: 400;
   }
   ::selection {
     background: var(--color-ink);

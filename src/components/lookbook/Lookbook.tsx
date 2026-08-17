@@ -112,7 +112,7 @@ const Lookbook = () => {
               ].map((w) => (
                 <span
                   key={w + k}
-                  className="mx-6 font-display italic text-3xl md:text-4xl text-ink"
+                  className="mx-6 font-display text-3xl md:text-4xl text-ink"
                 >
                   {w} <span className="text-white mx-3">✦</span>
                 </span>
